@@ -22,3 +22,14 @@ export function getCoverUrl(isbn: string | null): string | null {
   if (!isbn) return null;
   return `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`;
 }
+
+// Amazon Associates affiliate tag — replace with your tag when you have one
+const AMAZON_AFFILIATE_TAG = "";
+
+export function getAmazonUrl(isbn: string): string {
+  const cleanIsbn = isbn.replace(/-/g, "");
+  const baseUrl = `https://www.amazon.com/dp/${cleanIsbn}`;
+  return AMAZON_AFFILIATE_TAG
+    ? `${baseUrl}?tag=${AMAZON_AFFILIATE_TAG}`
+    : baseUrl;
+}

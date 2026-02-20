@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getAllBookSlugs, getBookBySlug } from "@/lib/notion";
-import { markdownToHtml, formatDate, getCoverUrl } from "@/lib/utils";
+import { markdownToHtml, formatDate, getCoverUrl, getAmazonUrl } from "@/lib/utils";
 import RatingDisplay from "@/components/RatingDisplay";
 import type { Metadata } from "next";
 
@@ -94,7 +94,7 @@ export default async function BookPage({
       <div className="mt-10 pt-4 border-t border-gray-200 flex gap-4 text-sm text-gray-400">
         {book.isbn && (
           <a
-            href={`https://www.amazon.com/dp/${book.isbn}`}
+            href={getAmazonUrl(book.isbn)}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-600"

@@ -20,7 +20,8 @@ export function generateSlug(title: string): string {
 
 export function getCoverUrl(isbn: string | null): string | null {
   if (!isbn) return null;
-  return `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`;
+  const cleanIsbn = isbn.replace(/-/g, "");
+  return `https://books.google.com/books/content?vid=isbn:${cleanIsbn}&printsec=frontcover&img=1&zoom=1`;
 }
 
 // Amazon Associates affiliate tag — replace with your tag when you have one

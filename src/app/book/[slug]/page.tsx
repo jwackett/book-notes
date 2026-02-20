@@ -91,26 +91,33 @@ export default async function BookPage({
         dangerouslySetInnerHTML={{ __html: contentHtml }}
       />
 
-      <div className="mt-10 pt-4 border-t border-gray-200 flex gap-4 text-sm text-gray-400">
+      <div className="mt-10 pt-4 border-t border-gray-200 text-sm text-gray-400">
+        <div className="flex gap-4">
+          {book.isbn && (
+            <a
+              href={getAmazonUrl(book.isbn)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-600"
+            >
+              Buy on Amazon
+            </a>
+          )}
+          {book.doi && (
+            <a
+              href={book.doi}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-600"
+            >
+              DOI
+            </a>
+          )}
+        </div>
         {book.isbn && (
-          <a
-            href={getAmazonUrl(book.isbn)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-600"
-          >
-            Amazon
-          </a>
-        )}
-        {book.doi && (
-          <a
-            href={book.doi}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-600"
-          >
-            DOI
-          </a>
+          <p className="text-xs text-gray-300 mt-2">
+            As an Amazon Associate I earn from qualifying purchases.
+          </p>
         )}
       </div>
     </article>

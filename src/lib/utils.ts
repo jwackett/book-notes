@@ -28,8 +28,7 @@ const AMAZON_AFFILIATE_TAG = "jordanwackett-20";
 
 export function getAmazonUrl(isbn: string): string {
   const cleanIsbn = isbn.replace(/-/g, "");
-  const baseUrl = `https://www.amazon.com/dp/${cleanIsbn}`;
-  return AMAZON_AFFILIATE_TAG
-    ? `${baseUrl}?tag=${AMAZON_AFFILIATE_TAG}`
-    : baseUrl;
+  const params = new URLSearchParams({ k: cleanIsbn });
+  if (AMAZON_AFFILIATE_TAG) params.set("tag", AMAZON_AFFILIATE_TAG);
+  return `https://www.amazon.com/s?${params.toString()}`;
 }

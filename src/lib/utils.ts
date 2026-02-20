@@ -24,7 +24,7 @@ export function getCoverUrl(isbn: string | null): string | null {
 }
 
 // Amazon Associates affiliate tag — replace with your tag when you have one
-const AMAZON_AFFILIATE_TAG = "";
+const AMAZON_AFFILIATE_TAG = "jordanwackett-20";
 
 export function getAmazonUrl(isbn: string): string {
   const cleanIsbn = isbn.replace(/-/g, "");
